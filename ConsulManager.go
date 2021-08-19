@@ -1,4 +1,4 @@
-package easyrpc_discovery
+package easy_discovery_consul
 
 import (
 	"fmt"

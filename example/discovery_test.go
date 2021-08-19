@@ -1,7 +1,7 @@
 package example
 
 import (
-	easyrpc_discovery2 "easy_discovery_consul"
+	"easy_discovery_consul"
 	"encoding/json"
 	"fmt"
 	"github.com/zhuxiujia/easyrpc_discovery"
@@ -49,7 +49,7 @@ func TestEnableDiscoveryService(t *testing.T) {
 }
 
 func registerClient() *TestService {
-	var consulManager = easyrpc_discovery2.ConsulManager{ConsulAddress: "127.0.0.1:8500"}
+	var consulManager = easy_discovery_consul.ConsulManager{ConsulAddress: "127.0.0.1:8500"}
 	var act TestService
 	easyrpc_discovery.EnableDiscoveryClient(nil, "TestApp", "127.0.0.1", 8500, 5*time.Second, &easyrpc_discovery.RpcConfig{
 		RetryTime: 1,
@@ -76,6 +76,6 @@ func registerServer() {
 		return fmt.Sprint(recover)
 	}
 	easyrpc_discovery.EnableDiscoveryService(services, address, port, 5*time.Second, deferFunc, func() easyrpc_discovery.Register {
-		return &easyrpc_discovery2.ConsulManager{ConsulAddress: consul}
+		return &easy_discovery_consul.ConsulManager{ConsulAddress: consul}
 	})
 }
